@@ -10,4 +10,5 @@ public class CourseController {
     public String hello(){
         return "Hello!!!";
     }
+
 }
