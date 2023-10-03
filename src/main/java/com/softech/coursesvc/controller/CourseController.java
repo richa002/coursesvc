@@ -8,8 +8,8 @@ public class CourseController {
 
 
     //dummy endpoint
-    @GetMapping("/")
-    public String hello(){
+    @GetMapping("/hello")
+    public String hello() {
         return "Hello!!!";
     }
 
