@@ -6,8 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CourseController {
 
+
+    //dummy endpoint
     @GetMapping("/hello")
-    public String hello(){
+    public String hello() {
         return "Hello!!!";
     }
+
+
 }
