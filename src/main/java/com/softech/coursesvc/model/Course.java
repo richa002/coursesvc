@@ -2,11 +2,11 @@ package com.softech.coursesvc.model;
 
 public class Course {
 
-    long courseId;// primary key
-    String courseName;
-    boolean isActive;
-    double fees;
-    String currency;
-    int days;
-    String type;
+    private long courseId;// primary key
+    private String courseName;
+    private boolean isActive;
+    private double fees;
+    private String currency;
+    private int days;
+    private String type;
 }
