@@ -1,6 +1,7 @@
 package com.softech.coursesvc.model;
 
 
+
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
