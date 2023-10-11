@@ -27,6 +27,7 @@ public class CourseController {
     {
         return courseRepository.findAll();
 
+
     }
     @GetMapping("/v1/course/{courseId}")
     public Course getCourseById(@PathVariable long id)
