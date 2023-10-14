@@ -1,5 +1,8 @@
 package com.softech.coursesvc.model;
 
+
+
+
 public class Course {
 
     private long courseId;// primary key
