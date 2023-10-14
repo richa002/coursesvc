@@ -5,20 +5,17 @@ import com.softech.coursesvc.entity.CourseEntity;
 import com.softech.coursesvc.service.CourseSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/coursesvc")
 public class CourseController {
-    private final CourseList courseList;
-    @Autowired
-    private CourseSvc courseSvc;
 
     @Autowired
-    public CourseController(CourseList courseList) {
-        this.courseList = courseList;
-    }
+    private CourseSvc courseSvc;
 
     //dummy endpoint
     @GetMapping("/hello")
@@ -28,6 +25,7 @@ public class CourseController {
 
     @GetMapping("/v1/course")
     public CourseList getCourses() {
+        CourseList courseList = new CourseList();
         List<CourseEntity> courses = courseSvc.getAllCourses();
         courseList.setCourses(courses);
         courseList.setNoOfRecords(courses.size());
