@@ -4,6 +4,7 @@ import com.softech.coursesvc.entity.CourseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.List;
 
 @Data
@@ -11,6 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 
 public class CourseList {
-    List<CourseEntity> courses;
-    int noOfRecords;
+    private List<CourseEntity> courses;
+    private int noOfRecords;
 }
