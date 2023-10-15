@@ -1,5 +1,6 @@
-package com.softech.coursesvc;
+package com.softech.coursesvc.courseService;
 
+import com.softech.coursesvc.courseRepo.CourseRepos;
 import com.softech.coursesvc.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,10 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CourseService {
+public class CourseSvc {
     @Autowired
 
-    private CourseRepository courseRepository;
+    private CourseRepos courseRepository;
 
     public List<Course> getAllCourses(){
         return courseRepository.findAll();
