@@ -45,7 +45,7 @@ public ResponseEntity<CourseEntity> getCourseById(@PathVariable Long courseId)
     {
         return new ResponseEntity<CourseEntity>(course, HttpStatus.OK);
     }else {
-        return new ResponseEntity<>(course, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
 
     }
