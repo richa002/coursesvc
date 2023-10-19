@@ -36,4 +36,5 @@ public class CourseSvc {
     public void deleteCourse(Long courseId) {
         courseRepos.deleteById(courseId);
 
-
+    }
+}
