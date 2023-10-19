@@ -35,11 +35,13 @@ public class CourseController {
     }
 
 @GetMapping("/v1/course/{courseId}")
-public ResponseEntity<CourseEntity> getCourseById(@PathVariable Long courseId) {
-    CourseEntity course = courseSvc.getCourseById(courseId);
-    if (course != null) {
+public ResponseEntity<CourseEntity> getCourseById(@PathVariable Long courseId)
+{
+    CourseEntity course= courseSvc.getCourseById(courseId);
+    if(course != null)
+    {
         return new ResponseEntity<CourseEntity>(course, HttpStatus.OK);
-    } else {
+    }else {
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
 
