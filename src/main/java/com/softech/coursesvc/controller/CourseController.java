@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.bind.ValidationException;
 import java.util.List;
 
 @RestController
@@ -43,21 +44,27 @@ public ResponseEntity<CourseEntity> getCourseById(@PathVariable Long courseId)
         return new ResponseEntity<CourseEntity>(course, HttpStatus.OK);
     }else {
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-
-
-    }}
+    }
+}
 
     @PostMapping("/v1/course")
     public CourseEntity createCourse(@RequestBody CourseEntity courseEntity){
         return courseSvc.createCourse(courseEntity);
 
     }
-    @PutMapping("/v1/course/{courseId}")
-    public void updateCourse(@PathVariable Long courseId, @RequestBody CourseEntity courseEntity){
-        courseSvc.updateCourse(courseId, courseEntity);
-    }
+        @PutMapping("/v1/course/{courseId}")
+        public void updateCourse(@PathVariable Long courseId, @RequestBody CourseEntity courseEntity) throws ValidationException {
+            if (courseId == null || courseEntity == null) {
+                throw new ValidationException("Invalid input data");
+            }
+            CourseEntity updatedCourse = courseSvc.updateCourse(courseId, courseEntity);
+//           return ResponseEntity.ok(updatedCourse);
 
-    @DeleteMapping("/v1/course/{courseId}")
+            courseSvc.updateCourse(courseId, courseEntity);
+            System.out.println("Updated the course successfully");
+        }
+
+      @DeleteMapping("/v1/course/{courseId}")
     public void deleteCourse(@PathVariable Long courseId){
         courseSvc.deleteCourse(courseId);
 
