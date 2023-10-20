@@ -2,11 +2,8 @@ package com.softech.coursesvc.controller;
 
 import com.softech.coursesvc.CourseList;
 import com.softech.coursesvc.entity.CourseEntity;
-import com.softech.coursesvc.model.Course;
 import com.softech.coursesvc.service.CourseSvc;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,15 +32,17 @@ public class CourseController {
     }
 
 @GetMapping("/v1/course/{courseId}")
-public ResponseEntity<CourseEntity> getCourseById(@PathVariable Long courseId) {
+public CourseEntity getCourseById(@PathVariable Long courseId) {
     CourseEntity course = courseSvc.getCourseById(courseId);
-    if (course != null) {
-        return new ResponseEntity<CourseEntity>(course, HttpStatus.OK);
-    } else {
-        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-
-
+    if (course == null) {
+        if (course == null) {
+            throw new CourseNotFoundException("Course with this id" + courseId + " not found");
+        }
+        return course;
     }
+
+
+    return course;
 }
 
     @PostMapping("/v1/course")
