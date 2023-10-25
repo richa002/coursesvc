@@ -42,6 +42,7 @@ public CourseEntity getCourseById(@PathVariable Long courseId) {
     }
 
 
+
     return course;
 }
 
