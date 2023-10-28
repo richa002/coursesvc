@@ -4,10 +4,10 @@ import com.softech.coursesvc.CourseList;
 import com.softech.coursesvc.entity.CourseEntity;
 import com.softech.coursesvc.service.CourseSvc;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.bind.ValidationException;
 import java.util.List;
 
 @RestController
@@ -36,16 +36,19 @@ public class CourseController {
 
 @GetMapping("/v1/course/{courseId}")
 public ResponseEntity<CourseEntity> getCourseById(@PathVariable Long courseId) {
+        try{
+            if(courseId <=0){
+                throw new ValidationFailedException("Course id must be greater than 0");
+            }
+
     CourseEntity course = courseSvc.getCourseById(courseId);
+
     if (course != null) {
-        return new ResponseEntity<CourseEntity>(course, HttpStatus.OK);
+        return ResponseEntity.ok(course);
     } else {
-        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-
-
+        return ResponseEntity.notFound().build();
     }
 }
-
     @PostMapping("/v1/course")
     public CourseEntity createCourse(@RequestBody CourseEntity courseEntity){
         return courseSvc.createCourse(courseEntity);
