@@ -61,7 +61,7 @@ public ResponseEntity<CourseEntity> getCourseById(@PathVariable Long courseId)
 //           return ResponseEntity.ok(updatedCourse);
 
             courseSvc.updateCourse(courseId, courseEntity);
-            System.out.println("Updated the course successfully");
+            System.out.println("Updated the course successfully.");
         }
 
       @DeleteMapping("/v1/course/{courseId}")
