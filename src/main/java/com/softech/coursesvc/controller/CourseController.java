@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/coursesvc")
+//@RequestMapping("/coursesvc")
 public class CourseController {
 
     @Autowired
@@ -48,9 +48,10 @@ public ResponseEntity<CourseEntity> getCourseById(@PathVariable Long courseId)
     }}
 
     @PostMapping("/v1/course")
-    public CourseEntity createCourse(@RequestBody CourseEntity courseEntity){
-        return courseSvc.createCourse(courseEntity);
-
+    public ResponseEntity<CourseEntity> createCourse(@RequestBody CourseEntity courseEntity){
+      //  return courseSvc.createCourse(courseEntity);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(courseSvc.createCourse(courseEntity));
     }
     @PutMapping("/v1/course/{courseId}")
     public void updateCourse(@PathVariable Long courseId, @RequestBody CourseEntity courseEntity){
