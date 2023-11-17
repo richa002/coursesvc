@@ -22,12 +22,12 @@ public class CourseSvc {
         return courseRepos.findById(courseId).orElse(null);
     }
 
-     public CourseEntity createCourse(CourseEntity courseEntity) {
+    public CourseEntity createCourse(CourseEntity courseEntity) {
 
 
-    return courseRepos.save(courseEntity);
+        return courseRepos.save(courseEntity);
 
-}
+    }
 
     public CourseEntity updateCourse(Long courseId, CourseEntity courseEntity) {
         return courseRepos.save(courseEntity);
@@ -35,5 +35,7 @@ public class CourseSvc {
 
     public void deleteCourse(Long courseId) {
         courseRepos.deleteById(courseId);
+    }
+}
 
 
