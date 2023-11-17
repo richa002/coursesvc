@@ -34,33 +34,34 @@ public class CourseController {
     }
 
 
-@GetMapping("/v1/course/{courseId}")
-public ResponseEntity<CourseEntity> getCourseById(@PathVariable Long courseId)
-{
-    CourseEntity course= courseSvc.getCourseById(courseId);
-    if(course != null)
-    {
-        return new ResponseEntity<CourseEntity>(course, HttpStatus.OK);
-    }else {
-        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    @GetMapping("/v1/course/{courseId}")
+    public ResponseEntity<CourseEntity> getCourseById(@PathVariable Long courseId) {
+        CourseEntity course = courseSvc.getCourseById(courseId);
+        if (course != null) {
+            return new ResponseEntity<CourseEntity>(course, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
 
-    }}
+        }
+    }
 
     @PostMapping("/v1/course")
-    public ResponseEntity<CourseEntity> createCourse(@RequestBody CourseEntity courseEntity){
-      //  return courseSvc.createCourse(courseEntity);
+    public ResponseEntity<CourseEntity> createCourse(@RequestBody CourseEntity courseEntity) {
+        //  return courseSvc.createCourse(courseEntity);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(courseSvc.createCourse(courseEntity));
     }
+
     @PutMapping("/v1/course/{courseId}")
-    public void updateCourse(@PathVariable Long courseId, @RequestBody CourseEntity courseEntity){
+    public void updateCourse(@PathVariable Long courseId, @RequestBody CourseEntity courseEntity) {
         courseSvc.updateCourse(courseId, courseEntity);
     }
 
     @DeleteMapping("/v1/course/{courseId}")
-    public void deleteCourse(@PathVariable Long courseId){
+    public void deleteCourse(@PathVariable Long courseId) {
         courseSvc.deleteCourse(courseId);
 
-    }}
+    }
+}
 
